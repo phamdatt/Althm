@@ -14,6 +14,31 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var leftRightDifference = function (nums) {
 
+function sum(nums) {
+   if (nums.length === 0) {
+      return 0;
+   }
+   let sum = 0;
+   for (let i = 0; i < nums.length; i++) {
+      sum += nums[i];
+   }
+   return sum
 };
+var leftRightDifference = function (nums) {
+   let result = []
+   for (let i = 0; i < nums.length; i++) {
+      if (i === 0) {
+         let left = sum([])
+         let right = sum(nums.slice(1, nums.length))
+         result.push(Math.abs(left - right))
+      } else {
+         let left = sum(nums.slice(0, i + 1))
+         let right = sum(nums.slice(i, nums.length))
+         result.push(Math.abs(left - right))
+      }
+   }
+   return result
+};
+
+leftRightDifference([10, 4, 8, 3])
