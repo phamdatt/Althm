@@ -14,8 +14,14 @@
  * @return {number[]}
  */
 var decode = function (encoded, first) {
-
+   let result = [first]
+   for (let i = 0; i < encoded.length; i++) {
+      result.push(result[i] ^ encoded[i])
+   }
+   console.log(result)
+   return result
 };
-
+decode([6, 2, 7, 3], 4)
 //Input: encoded = [1,2,3], first = 1
 //Output: [1,0,2,1]
+//4 6 2 7 3

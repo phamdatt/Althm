@@ -17,16 +17,36 @@
  * @return {number}
  */
 var triangularSum = function (nums) {
-    if (nums.length === 1) return nums[0]
+    // if (nums.length === 1) return nums
+    // let result = []
+    // //create new arr
+    // for (let i = 0; i < nums.length - 1; i++) {
+    //     let value = (nums[i] + nums[i + 1]) % 10
+    //     result.push(value)
+    // }
+    // nums = nums.concat(triangularSum(result))
+    // return nums.slice(-1)
+    
+    // let start = 0, end = nums.length - 1;
+    // while (start < end) {
+    //     for (let i = start; i < end; i++) {
+    //         nums[i] = (nums[i] + nums[i + 1]) % 10;
+    //     }
+    //     end--;
+    // }
+    // return nums
 
-    //create new arr
-    for (let i = 0; i < nums.length; i++) {
-
+    while(nums.length > 1){
+        let arr = []
+        for(let i=0; i<nums.length-1; i++){
+            arr.push((nums[i] + nums[i+1]) % 10)
+        }
+        nums = arr
     }
-
-    // return the end value of arr
-    return nums.slice(-1);
+    return nums[0]
 };
+
+console.log(triangularSum([1, 2, 3, 4, 5]));
 
 //Input: nums = [1,2,3,4,5]
 //Output: 8
@@ -35,3 +55,5 @@ var triangularSum = function (nums) {
 
 // for example
 // i = 0 => newNums[i] = 1+2%10 => 3
+
+// console.log((6+2)%10)
