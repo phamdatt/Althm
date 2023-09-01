@@ -12,9 +12,33 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-
+    // let count = 0;
+    // let pilot = 0
+    // let result = []
+    // for (let i = 0; i < nums.length; i++) {
+    //     if (nums[pilot] != nums[i + 1]) {
+    //         result.unshift(nums[i])
+    //         count++
+    //         pilot++
+    //     } else {
+    //         pilot++
+    //         result.push("_")
+    //     }
+    // }
+    // result = result.sort((a, b) => a - b)
+    // for (let i = 0; i < result.length; i++) {
+    //     nums.splice(i, i, result[i])
+    // }
+    // console.log(nums)
+    // return count
+    let i = 0;
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[i] !== nums[j]) {
+            i++;
+            nums[i] = nums[j];
+        }
+    }
+    return i + 1;
 };
 
-removeDuplicates([1, 1, 2])
-
-// Output: 2, nums = [1,2,_]
+removeDuplicates([-3, -1, 0, 0, 0, 3, 3])
