@@ -20,35 +20,20 @@ function twoSum(nums, target) {
     // }
     // return result
 
-    // Approach with Two Pointer that notice arr always sorted
-    // Time complexity: O(N)
-    //Space 0(N)
-    // let result = []
-    // let start = 0;
-    // let end = nums.length - 1;
-    // while (start < end) {
-    //     if (nums[start] + nums[end] == target) {
-    //         result.push(start, end)
-    //         return result
-    //     }
-    //     if (nums[start] + nums[end] > target) {
-    //         end--
-    //     }
-    //     if (nums[start] + nums[end] < target) {
-    //         start++
+    // let map = new Map()
+    // for (let i = 0; i < nums.length; i++) {
+    //     const remain = target - nums[i]
+    //     if (map.has(remain)) {
+    //         return [map.get(remain), i]
+    //     } else {
+    //         map.set(nums[i], i)
     //     }
     // }
-    // return result
-    let map = new Map()
-    for (let i = 0; i < nums.length; i++) {
-        const remain = target - nums[i]
-        if (map.has(remain)) {
-            return [map.get(remain), i]
-        } else {
-            map.set(nums[i], i)
-        }
-    }
-    return []
+    // return []
+
+    // Two pass
+    // Time complexity : 0N
+    // Space complexity: 0N
 }
 console.log(twoSum([3, 2, 4], 6))
 //[1,2]

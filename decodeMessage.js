@@ -4,23 +4,16 @@
  * @return {string}
  */
 var decodeMessage = function (key, message) {
-    let newStr = key.replace(/\s/g, "")
-    let hash = new Map()
-    
-    for (let i = 0; i < newStr.length; i++) {
+    let map = new Map()
+    let set = new Set(key.replace(/\s/g, ""))
+    for (let i = 0; i < set.size; i++) {
         let charCode = 97 + i;
-        let charValue = String.fromCharCode(charCode);
-        console.log(charValue)
-        hash.set(newStr[i], charValue)
+        map.set([...set][i], String.fromCharCode(charCode))
     }
-    let newMess = message.replace(/\s/g, "")
-    let str = ''
-    for (let i = 0; i < newMess.length; i++) {
-        str += hash.get(newMess[i])
+    let str = ""
+    for (let i = 0; i < message.length; i++) {
+        str += map.get(message[i])
     }
-    // console.log(hash)
-    // console.log(str)
+    return str.replace(/undefined/g, " ")
 };
-decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv")
-// Input: key = "the quick brown fox jumps over the lazy dog", message = "vkbs bs t suepuv"
-// Output: "this is a secret"
+console.log(decodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv"))
